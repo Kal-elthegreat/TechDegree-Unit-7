@@ -6,7 +6,7 @@ import '../src/project.css';
 import apiKey from './config';
 import Header from './components/Header';
 import MainNav from './components/MainNav';
-import PhotoContainer from './components/PhotoContainer';
+import GalleryContainer from './components/PhotoContainer';
 
 const api = apiKey;
 
@@ -14,12 +14,13 @@ class App extends Component {
 
   state ={
     imgs: [],
-    query: {/* search input */}
+    query: {/* search input */},
+    results: null
   };
 
   
   componentDidMount (){
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=cats&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=basketball&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           imgs: response.data.photos.photo
@@ -38,7 +39,9 @@ class App extends Component {
 
         <MainNav />
 
-        <PhotoContainer />
+        <GalleryContainer 
+          data= {this.state.imgs}
+        />
       </div>
       
     );
