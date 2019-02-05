@@ -14,34 +14,47 @@ class App extends Component {
 
   state ={
     imgs: [],
-    query: {/* search input */},
-    results: null
+    loading: true
   };
 
   
   componentDidMount (){
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=basketball&per_page=24&format=json&nojsoncallback=1`)
-      .then(response => {
-        this.setState({
-          imgs: response.data.photos.photo
-        });
-      })
+   this.searchBar();
+  }
+
+  searchBar = (tag = 'dogs') => {
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${tag}&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      this.setState({
+        imgs: response.data.photos.photo,
+        loading: false
+      });
+    })
+    .catch(function(error){
+      console.log(error)
+    })    
   }
 
   render() {
-    console.log(this.state.imgs)
     return (
       <div className="container">
 
         <Header 
         title= "React Flicker App"
+        searchBar={this.searchBar}
         />
 
-        <MainNav />
-
-        <GalleryContainer 
+        <MainNav 
+        />
+        {
+          (this.state.loading) 
+          ? <p> Loading..</p>
+          :<GalleryContainer 
           data= {this.state.imgs}
-        />
+          />
+
+        }
+        
       </div>
       
     );
