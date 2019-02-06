@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter,
+  Route
+} from 'react-router-dom';
+
 import axios from 'axios'
 import '../src/project.css';
 
@@ -6,7 +11,7 @@ import '../src/project.css';
 import apiKey from './config';
 import Header from './components/Header';
 import MainNav from './components/MainNav';
-import GalleryContainer from './components/PhotoContainer';
+import GalleryContainer from './components/GalleryContainer';
 
 const api = apiKey;
 
@@ -37,28 +42,40 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <BrowserRouter>
+          
+        <div className="container">
+          <Route  path='/' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>
+          <Route  path='/' component={MainNav}/>
+          {/*<Route exact path='/search' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>*/}
+          {
+            (this.state.loading) 
+            ? <p> Loading..</p>
+            :<GalleryContainer 
+            data= {this.state.imgs}
+            />
+          }
+          
+        </div>  
 
-        <Header 
-        title= "React Flicker App"
-        searchBar={this.searchBar}
-        />
-
-        <MainNav 
-        />
-        {
-          (this.state.loading) 
-          ? <p> Loading..</p>
-          :<GalleryContainer 
-          data= {this.state.imgs}
-          />
-
-        }
-        
-      </div>
-      
+    </BrowserRouter>  
     );
   }
 }
 
 export default App;
+
+
+/* 
+{
+            (this.state.loading) 
+            ? <p> Loading..</p>
+            :<GalleryContainer 
+            data= {this.state.imgs}
+            />
+          }
+
+
+
+
+*/
