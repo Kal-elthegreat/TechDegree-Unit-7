@@ -12,6 +12,7 @@ import apiKey from './config';
 import Header from './components/Header';
 import MainNav from './components/MainNav';
 import GalleryContainer from './components/GalleryContainer';
+import Search from './components/Search';
 
 const api = apiKey;
 
@@ -50,11 +51,11 @@ class App extends Component {
         <div className="container">
           <Route  path='/' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>
           <Route  path='/' component={MainNav}/>
-          <Route  path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
-          {/*<Route exact path='/search' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>*/}
-          <Route exact path='/cats' render={() => <GalleryContainer  searchBar={this.searchBar('cats')} data={this.state.imgs}/>}/>
+          <Route  exact path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
+          <Route exact path='/search' render={()=> <Search searchBar={this.searchBar} />}/>
+          <Route exact path='/beach' render={() => <GalleryContainer  searchBar={this.searchBar('beach')} data={this.state.imgs}/>}/>
           <Route exact path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
-          <Route exact path='/snakes' render={() => <GalleryContainer searchBar={this.searchBar('snakes')} data={this.state.imgs}/>}/>
+          <Route exact path='/food' render={() => <GalleryContainer searchBar={this.searchBar('food')} data={this.state.imgs}/>}/>
           
           
         </div>  
