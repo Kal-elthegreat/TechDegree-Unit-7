@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MainNav = (props) => {
+const MainNav = () => {
     return(
         <nav className="main-nav">
         <ul>

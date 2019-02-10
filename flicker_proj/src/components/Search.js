@@ -31,3 +31,5 @@ class Search extends Component {
 }
 
 export default Search;
+
+// need to link my search bar to stop navlinks from rendering after each search

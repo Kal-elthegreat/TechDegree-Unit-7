@@ -6,9 +6,9 @@ import {
 
 import axios from 'axios'
 import '../src/project.css';
-
-
 import apiKey from './config';
+
+// App Components
 import Header from './components/Header';
 import MainNav from './components/MainNav';
 import GalleryContainer from './components/GalleryContainer';
@@ -20,8 +20,8 @@ class App extends Component {
 
   state ={
     imgs: [],
-    loading: true,
-    searchTag:''
+    loading: true
+    //searchTag:''
   };
 
   
@@ -49,18 +49,20 @@ class App extends Component {
       <BrowserRouter>
           
         <div className="container">
-          <Route path='/' render={()=> <Header title= "React Flicker App"/>}/>
+          {/* Render Header, Search, & MainNav components */}
+          {/*<Route path='/' render={()=> <Header title= "React Flicker App"/>}/>*/}
           <Route path='/' render={()=> <Search searchBar={this.searchBar} />}/> 
           <Route path='/' component={MainNav}/>
-
-          <Route exact path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
-          <Route exact path='/:search' render={() => <GalleryContainer data={this.state.imgs}/>}/>
+          
+          {/* Default images */}
+          <Route exact path='/' render={() => (this.state.loading) ? <p> Loading..</p> :<GalleryContainer data= {this.state.imgs}/>}/> 
+          
+          {/* MainNav & Search images */}
           <Route exact path='/beach' render={() => <GalleryContainer  searchBar={this.searchBar('beach')} data={this.state.imgs}/>}/>
           <Route exact path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
           <Route exact path='/food' render={() => <GalleryContainer searchBar={this.searchBar('food')} data={this.state.imgs}/>}/>
-          <Route exact path='/search:input' render={() => <GalleryContainer />}/>
-          
-          
+          <Route exact path='/:search' render={() => <GalleryContainer data={this.state.imgs}/>}/>
+          <Route exact path='/search:input' render={() => <GalleryContainer searchBar={this.searchBar('goat')} />}/>
         </div>  
 
     </BrowserRouter>  
@@ -70,17 +72,3 @@ class App extends Component {
 
 export default App;
 
-
-/* 
-{
-            (this.state.loading) 
-            ? <p> Loading..</p>
-            :<GalleryContainer 
-            data= {this.state.imgs}
-            />
-          }
-
-
-
-
-*/
