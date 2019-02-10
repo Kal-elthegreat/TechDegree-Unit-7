@@ -19,7 +19,8 @@ class App extends Component {
 
   state ={
     imgs: [],
-    loading: true
+    loading: true,
+    searchTag:''
   };
 
   
@@ -27,10 +28,11 @@ class App extends Component {
    this.searchBar();
   }
 
-  searchBar = (tag = 'dogs') => {
+  searchBar = (tag = 'nature') => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${api}&tags=${tag}&per_page=24&format=json&nojsoncallback=1`)
     .then(response => {
       this.setState({
+        //searchTag: tag,
         imgs: response.data.photos.photo,
         loading: false
       });
@@ -41,20 +43,19 @@ class App extends Component {
   }
 
   render() {
+    //const searchPath = `/${this.searchTag}`
     return (
       <BrowserRouter>
           
         <div className="container">
           <Route  path='/' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>
           <Route  path='/' component={MainNav}/>
+          <Route  path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
           {/*<Route exact path='/search' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>*/}
-          {
-            (this.state.loading) 
-            ? <p> Loading..</p>
-            :<GalleryContainer 
-            data= {this.state.imgs}
-            />
-          }
+          <Route exact path='/cats' render={() => <GalleryContainer  searchBar={this.searchBar('cats')} data={this.state.imgs}/>}/>
+          <Route exact path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
+          <Route exact path='/snakes' render={() => <GalleryContainer searchBar={this.searchBar('snakes')} data={this.state.imgs}/>}/>
+          
           
         </div>  
 

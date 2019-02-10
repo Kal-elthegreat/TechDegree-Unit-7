@@ -3,7 +3,9 @@ import React from 'react';
 import NotFound from './NotFound'
 import PhotoList from './PhotoList';
 
-const GalleryContainer = (props) => {
+const GalleryContainer = (props)=> {
+
+    //let display = match.params.input;
 
     const photosList = props.data;
     let photos;
@@ -25,7 +27,7 @@ const GalleryContainer = (props) => {
     
     return (
         <div className="photo-container">
-        <h2>Results - needs to change</h2>
+        <h2> Results</h2>
         <ul>
           {photos}
         </ul>  
