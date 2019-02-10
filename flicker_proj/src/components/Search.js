@@ -5,6 +5,7 @@ class Search extends Component {
     state= {
         searchInput:''
     }
+    
 
 
     handleSubmit= (e) => {

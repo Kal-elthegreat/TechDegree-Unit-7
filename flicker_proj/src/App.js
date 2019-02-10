@@ -49,13 +49,16 @@ class App extends Component {
       <BrowserRouter>
           
         <div className="container">
-          <Route  path='/' render={()=> <Header title= "React Flicker App" searchBar={this.searchBar} />}/>
-          <Route  path='/' component={MainNav}/>
-          <Route  exact path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
-          <Route exact path='/search' render={()=> <Search searchBar={this.searchBar} />}/>
+          <Route path='/' render={()=> <Header title= "React Flicker App"/>}/>
+          <Route path='/' render={()=> <Search searchBar={this.searchBar} />}/> 
+          <Route path='/' component={MainNav}/>
+
+          <Route exact path='/' render={() => <GalleryContainer data={this.state.imgs}/>}/>
+          <Route exact path='/:search' render={() => <GalleryContainer data={this.state.imgs}/>}/>
           <Route exact path='/beach' render={() => <GalleryContainer  searchBar={this.searchBar('beach')} data={this.state.imgs}/>}/>
           <Route exact path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
           <Route exact path='/food' render={() => <GalleryContainer searchBar={this.searchBar('food')} data={this.state.imgs}/>}/>
+          <Route exact path='/search:input' render={() => <GalleryContainer />}/>
           
           
         </div>  
