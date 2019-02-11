@@ -21,7 +21,6 @@ class App extends Component {
   state ={
     imgs: [],
     loading: true
-    //searchTag:''
   };
 
   
@@ -44,25 +43,22 @@ class App extends Component {
   }
 
   render() {
-    //const searchPath = `/${this.searchTag}`
     return (
       <BrowserRouter>
           
         <div className="container">
           {/* Render Header, Search, & MainNav components */}
-          {/*<Route path='/' render={()=> <Header title= "React Flicker App"/>}/>*/}
-          <Route path='/' render={()=> <Search searchBar={this.searchBar} />}/> 
-          <Route path='/' component={MainNav}/>
+          <Header title= "React Flicker App"/>
+          <Search searchBar={this.searchBar} />
+          <MainNav/>
           
           {/* Default images */}
           <Route exact path='/' render={() => (this.state.loading) ? <p> Loading..</p> :<GalleryContainer data= {this.state.imgs}/>}/> 
           
           {/* MainNav & Search images */}
-          <Route exact path='/beach' render={() => <GalleryContainer  searchBar={this.searchBar('beach')} data={this.state.imgs}/>}/>
-          <Route exact path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
-          <Route exact path='/food' render={() => <GalleryContainer searchBar={this.searchBar('food')} data={this.state.imgs}/>}/>
-          <Route exact path='/:search' render={() => <GalleryContainer data={this.state.imgs}/>}/>
-          <Route exact path='/search:input' render={() => <GalleryContainer searchBar={this.searchBar('goat')} />}/>
+          <Route path='/beach' render={() => <GalleryContainer  searchBar={this.searchBar('beach')} data={this.state.imgs}/>}/>
+          <Route path='/dogs' render={() => <GalleryContainer searchBar={this.searchBar('dogs')} data={this.state.imgs}/>}/>
+          <Route path='/food' render={() => <GalleryContainer searchBar={this.searchBar('food')} data={this.state.imgs}/>}/>
         </div>  
 
     </BrowserRouter>  

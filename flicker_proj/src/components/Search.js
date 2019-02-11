@@ -11,7 +11,10 @@ class Search extends Component {
     handleSubmit= (e) => {
         e.preventDefault();
         this.props.searchBar(this.tag.value)
+        let input = this.tag.value;
+        let path =  `/${input}`
         e.currentTarget.reset();
+
     }
     
     
