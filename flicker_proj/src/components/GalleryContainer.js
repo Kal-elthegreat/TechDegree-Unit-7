@@ -5,7 +5,6 @@ import PhotoList from './PhotoList';
 
 const GalleryContainer = (props)=> {
 
-    //let display = match.params.input;
 
     const photosList = props.data;
     let photos;
