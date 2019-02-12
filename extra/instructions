@@ -1,4 +1,4 @@
-Create your project
+ Create your project
 
 1. Use the index.html file and mockups as a general guide while you create the components of this project.
 
@@ -32,12 +32,12 @@ X The config.js file should look something like this:
 X const apiKey = 'YOUR API KEY';
 X export default apiKey;
 X Import your API key into your application, preferably into src/App.js, and save it to a variable like you would any other module, and use the variable where applicable. That way, your app’s users will only need to enter in an API key once.
-???? Important Note: This config.js file must be listed in the .gitignore file so it won’t be committed to your github repository. This will prevent your keys and tokens from getting posted publicly to GitHub. It is very important that you do NOT upload any of your personal API keys / secrets / passwords to Github or other publicly accessible place. When you submit this project for grading, your project reviewer will create their own config.js file and use their own API key to run the project.
+X Important Note: This config.js file must be listed in the .gitignore file so it won’t be committed to your github repository. This will prevent your keys and tokens from getting posted publicly to GitHub. It is very important that you do NOT upload any of your personal API keys / secrets / passwords to Github or other publicly accessible place. When you submit this project for grading, your project reviewer will create their own config.js file and use their own API key to run the project.
 
 //////////////////////////////////////////////////////////
 
 ROUTES
-Install React Router and set up your <Route> and <Link> or <NavLink> components.
+X Install React Router and set up your <Route> and <Link> or <NavLink> components.
 Include a "Search" link that includes a search field to let users search for photos.
 Clicking a nav link should navigate the user to the correct route, displaying the appropriate info.
 The current route should be reflected in the URL.
@@ -48,8 +48,8 @@ Pro Tip: When setting up the routes, if you're feeling stuck, it can be helpful 
 //////////////////////////////////////////////////////////
 
 REQUESTING THE DATA
-Fetch the data from the Flickr API using the Fetch API or a tool like Axios.
-Make sure data fetching and state is managed by a higher-level “container” component, like src/App.js.
+X Fetch the data from the Flickr API using the Fetch API or a tool like Axios.
+X Make sure data fetching and state is managed by a higher-level “container” component, like src/App.js.
 X It is recommended the you use the following link for help with this part of the project, https://www.flickr.com/services/api/explore/flickr.photos.search.
 X Enter a tag to search for, such as “sunsets.”
 X You should also limit the number of results to 24 using the per_page argument.
@@ -62,9 +62,9 @@ Pro Tip: When requesting data from the API, if you're feeling stuck, it can be h
 SEARCH
 Be sure to include a search field feature and a search route to search for new categories of images.
 Displaying the data
-Make sure each image gets a unique "key" prop.
-There should be no console warnings regarding unique "key" props.
+X Make sure each image gets a unique "key" prop.
+X There should be no console warnings regarding unique "key" props.
 The title of each page displaying images should be dynamically provided via "props".
-The current route should be reflected in the URL.
-There should be no more that 24 images displayed.
+XThe current route should be reflected in the URL.
+X There should be no more that 24 images displayed.
 
